@@ -1,0 +1,62 @@
+.dropdown{
+    margin-left: 50px;
+    margin-bottom: 20px;
+}
+
+#staticBackdropLabel{
+    text-transform: uppercase;
+}
+
+#topping-checkbox{
+    margin-left: 40px;
+}
+
+#base_price{
+}
+
+#dollar_sign{
+    margin-left: 10px;
+}
+
+.modal-dialog {
+    max-width: 900px;
+    max-height: 400px;
+    margin: 1.75rem auto;
+}
+
+#increment-shopping{
+    margin-left: 5px;
+}
+
+#decrement-shopping{
+    margin-right: 5px;
+
+}
+
+#total{
+    margin-top: 80px;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.nav{
+    padding: 10px;
+    margin-bottom: 30px;
+}
+
+#shopping-cart-button{
+    margin-top: 10px;
+}
+
+ul {
+    list-style-type: none;
+}
+
+
+li{
+    margin-left: 10px;
+}
+
+img{
+    width: 250px;
+}

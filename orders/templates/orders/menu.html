@@ -1,0 +1,90 @@
+{% extends "orders/base.html" %}
+
+{% block body %}
+    <h1> Menu </h1>
+    <h2>Pizza</h2>
+    <ul>
+        {% for menuitem in pizza_menu %}
+            {% if menuitem.size %}
+                <li>
+                    <span> {{ menuitem.name }}, {{ menuitem.size }}: {{ menuitem.base_price }}</span>
+                </li>
+            {% else %}
+                <li>
+                    <span> {{ menuitem.name }}: {{ menuitem.base_price }}</span>
+                </li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+
+    <h2>Subs</h2>
+    <ul>
+        {% for menuitem in sub_menu %}
+            {% if menuitem.size %}
+                <li>
+                    <span> {{ menuitem.name }}, {{ menuitem.size }}: {{ menuitem.base_price }}</span>
+                </li>
+            {% else %}
+                <li>
+                    <span> {{ menuitem.name }}: {{ menuitem.base_price }}</span>
+                </li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+
+    <h2>Pasta</h2>
+    <ul>
+        {% for menuitem in pasta_menu %}
+            {% if menuitem.size %}
+                <li>
+                    <span> {{ menuitem.name }}, {{ menuitem.size }}: {{ menuitem.base_price }}</span>
+                </li>
+            {% else %}
+                <li>
+                    <span> {{ menuitem.name }}: {{ menuitem.base_price }}</span>
+                </li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+
+    <h2>Salads</h2>
+    <ul>
+        {% for menuitem in salad_menu %}
+            {% if menuitem.size %}
+                <li>
+                    <span> {{ menuitem.name }}, {{ menuitem.size }}: {{ menuitem.base_price }}</span>
+                </li>
+            {% else %}
+                <li>
+                    <span> {{ menuitem.name }}: {{ menuitem.base_price }}</span>
+                </li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+
+    <h2>Dinner Platters</h2>
+    <ul>
+        {% for menuitem in platter_menu %}
+            {% if menuitem.size %}
+                <li>
+                    <span> {{ menuitem.name }}, {{ menuitem.size }}: {{ menuitem.base_price }}</span>
+                </li>
+            {% else %}
+                <li>
+                    <span> {{ menuitem.name }}: {{ menuitem.base_price }}</span>
+                </li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+
+
+
+    <h1> Toppings </h1>
+    <ul>
+        {% for topping in toppings %}
+            <li>
+                <span> {{ topping }}</span>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

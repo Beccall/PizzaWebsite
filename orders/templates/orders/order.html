@@ -1,0 +1,157 @@
+{% extends "orders/base.html" %}
+{% block head %}
+    {% load static %}
+    <script>
+        {% autoescape off %}
+            var model = {{ model_list }};
+        {% endautoescape %}
+
+        console.log(model);
+    </script>
+
+    <script type="text/javascript" src="{% static 'orders/order.js' %}"></script>
+{% endblock %}
+
+{% block body %}
+    <nav class="nav">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-9">
+                    <h1>Pizza, Pizza, Pizza! </h1>
+                </div>
+                <div class="col-3" ">
+                    <!-- Button trigger Shopping cart modal -->
+                    <button type="button" id="shopping-cart-button"class="btn btn-primary" data-toggle="modal" data-target="#shoppingcart">
+                        Check Out!
+                    </button>
+                </div>
+            </div>
+        <hr>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+    <div class="row">
+
+    {% for key,value in menu_items.items %}
+        <div class="dropdown">
+            <!-- Dropdown Button for each menu "type" -->
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                {{ key }}
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                {% for menuitem in value %}
+                    <!-- Button trigger MenuItem modal -->
+                    <!-- Button for each food "name" -->
+                    <button type="button" class="dropdown-item btn btn-primary" id="buttondropdownitem" data-toggle="modal"
+                            data-target="#staticBackdrop" value="{{ menuitem.id }}">
+                        {{ menuitem.name }}
+                    </button>
+                {% endfor %}
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+    </div>
+
+    <!-- MenuItem Modal -->
+    <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog"
+         aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog ">
+            <div class="modal-content">
+                <div class="contrainer-fluid">
+                <div class="row">
+            <div class="col-6">
+                <div class="modal-body">
+                    <h1 class="modal-title" id="staticBackdropLabel">Modal title</h1>
+                    {% load static %}
+                    <img src="{% static 'orders/pizza.jpeg' %}" />
+
+                    <div id="radio-buttons">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="exampleRadios" id="small"
+                                   value="small" checked>
+                            <label class="form-check-label" for="exampleRadios1">
+                                Small
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="exampleRadios" id="large"
+                                   value="large">
+                            <label class="form-check-label" for="exampleRadios2">
+                                Large
+                            </label>
+                        </div>
+                        <p id="topping-price">Toppings</p>
+                        <div id="total">
+                        <span id="dollar_sign">Total: $</span>
+                        <span id="price"></span>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+                <div class="modal-body" >
+                    <div class="modal-body">
+                    <button id="close-modal" type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    </div>
+
+                    <div id="topping-checkbox">
+                        {% for topping in toppings %}
+                        <div class="form-check">
+                            <input class="form-check-input" id="topping-check" type="checkbox" value="{{ topping }}">
+                            <label class="form-check-label" for="defaultCheck1">
+                                {{ topping }}
+                            </label>
+                        </div>
+                    {% endfor %}
+                    </div>
+                </div>
+                </div>
+                    <div class="modal-footer">
+                        <button id="decrement">-</button>
+                        <span id="amount">1</span>
+                        <button id="increment">+</button>
+                        <button type="button" class="btn btn-primary" id="submit-item">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Shopping Cart Modal -->
+    <div class="modal fade" id="shoppingcart" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="close-cart">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="shopping-body">
+                    <div class="container-fluid">
+                        <div class="row" id="shopping-cart-row">
+                            <div class="col-md-8" id="shopping-items">
+                            </div>
+                            <div class="col-md-4" id="shopping-totals" >
+                            </div>
+                        </div>
+                    </div>
+
+                <div class="modal-footer">
+                    <span id-="shopping-cart-total">total</span>
+                    <button type="button" class="btn btn-secondary" id="clear-cart">Clear Cart</button>
+                    <button type="button" class="btn btn-primary">Check Out</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

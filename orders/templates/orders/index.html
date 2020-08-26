@@ -1,0 +1,9 @@
+{% extends "orders/base.html" %}
+
+{% block body %}
+<h1 id="message">Welcome to Pizza, Pizza, Pizza</h1>
+<a href="order"">Click here to Order! </a>
+{% if request.user.username %}
+    <h1>Hello {{request.user.username}}!</h1>
+{% endif %}
+{% endblock %}
